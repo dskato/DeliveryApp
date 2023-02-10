@@ -12,7 +12,7 @@ namespace Domain.Entities
         public long? ProductId { get; set; }
         public virtual UserEntity? RequestingUser { get; set; }
         public long? RequestingUserId { get; set; }
-        public virtual UserEntity? CouriergUser { get; set; }
+        public virtual UserEntity? CourierUser { get; set; }
         public long? CourierUserId { get; set; }
 
     }
