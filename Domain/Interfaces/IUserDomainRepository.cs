@@ -16,5 +16,6 @@ namespace Domain.Interfaces
         bool UpdateUserBasicInfo(UserEntity entity);
         bool DeleteUserById(int id);
 
+
     }
 }
