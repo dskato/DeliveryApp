@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Domain.Interfaces.Generics
+{
+    public interface IGenericDataRepository<T> where T : class
+    {
+        int AddSync(params T[] items);
+        int UpdateSync(params T[] items);
+        int RemoveSync(params T[] items);
+        Task<IList<T>> GetAll(params Expression<Func<T, object>>[] navigationProperties);
+    }
+}
