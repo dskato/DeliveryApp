@@ -10,7 +10,7 @@ namespace Domain.Interfaces.Generics
     public interface IGenericDataRepository<T> where T : class
     {
         int AddSync(params T[] items);
-        int UpdateSync(params T[] items);
+        Task<int> Update(params T[] items);
         int RemoveSync(params T[] items);
         Task<IList<T>> GetAll(params Expression<Func<T, object>>[] navigationProperties);
     }

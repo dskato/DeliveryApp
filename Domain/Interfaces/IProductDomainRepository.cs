@@ -10,9 +10,8 @@ namespace Domain.Interfaces
 {
     public interface IProductDomainRepository : IGenericDataRepository<ProductEntity>
     {
-        bool CreateProduct(OrderEntity entity);
-        bool UpdateProduct(OrderEntity entity);
-        bool GetProductById(int id);
-        bool DeleteProductById(int id);
+        int CreateProduct(ProductEntity entity);
+        ProductEntity GetProductById(int id);
+        void DeleteProductById(int id);
     }
 }

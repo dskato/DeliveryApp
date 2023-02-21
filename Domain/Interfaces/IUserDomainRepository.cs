@@ -10,11 +10,10 @@ namespace Domain.Interfaces
 {
     public interface IUserDomainRepository : IGenericDataRepository<UserEntity>
     {
-        bool CreateUser(UserEntity entity);
+        int CreateUser(UserEntity entity);
         UserEntity GetUserByEmail(string email);
         UserEntity GetUserById(int id);
-        bool UpdateUserBasicInfo(UserEntity entity);
-        bool DeleteUserById(int id);
+        void DeleteUserById(int id);
 
 
     }

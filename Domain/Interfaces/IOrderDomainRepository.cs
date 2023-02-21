@@ -10,10 +10,10 @@ namespace Domain.Interfaces
 {
     public interface IOrderDomainRepository : IGenericDataRepository<OrderEntity>
     {
-        bool CreateOrder(OrderEntity entity);
-        bool UpdateOrder(OrderEntity entity);
-        bool GetOrderById(int id);
-        bool DeleteOrderById(int id);
+        int CreateOrder(OrderEntity entity);
+        OrderEntity GetOrderById(int id);
+        void DeleteOrderById(int id);
+        List<OrderEntity> GetAllOrders();
 
     }
 }
