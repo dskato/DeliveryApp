@@ -1,9 +1,4 @@
 ﻿using Domain.Base;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
@@ -13,8 +8,10 @@ namespace Domain.Entities
         public string? Name { get; set; }
         public string? Weight { get; set; }
         public string? Description { get; set; }
-        public virtual UserEntity? User { get; set; }
-        public long? UserId { get; set; }
-        public virtual List<OrderEntity> Orders { get; set; }
+
+        public virtual UserEntity User { get; set; } // Product belongs to one user
+        public int UserId { get; set; }
+
+        public virtual List<OrderEntity> Orders { get; set; } // A product can be in many orders
     }
 }

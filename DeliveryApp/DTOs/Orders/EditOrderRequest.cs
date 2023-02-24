@@ -6,6 +6,6 @@
         public string? PickUpAddress { get; set; }
         public string? DeliveryAddress { get; set; }
         public string? Description { get; set; }
-        public long? CourierUserId { get; set; }
+        public int? CourierUserId { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Infrastructure.Data.Configs
         {
             builder.ToTable("products");
             builder.HasKey(x => x.Id);
-            builder.HasOne(x => x.User).WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.NoAction).IsRequired(false);
+            builder.HasOne(p => p.User).WithMany(u => u.Products).HasForeignKey(p => p.UserId);
 
         }
     }

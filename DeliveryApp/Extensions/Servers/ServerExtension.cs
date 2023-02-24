@@ -11,7 +11,7 @@ namespace API.Extensions.Servers
             builder.Services.AddDbContext<AppDbContext>(
                 options =>
                 {
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("AppConnection"),
+                    options.UseSqlServer(builder.Configuration.GetConnectionString("DeliveryAppConnection"),
                     sqlServerOptionsAction: sqlOptions =>
                     {
                         sqlOptions.MigrationsAssembly("Infrastructure");

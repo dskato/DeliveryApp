@@ -17,6 +17,7 @@ namespace API
             entity.Address = request.Address;
             entity.Description = request.Description;
             entity.Role = request.Role;
+            entity.CreateDate = DateTime.Now;
 
             this._userDomainRepository.CreateUser(entity);
 
@@ -51,13 +52,14 @@ namespace API
             user.LastName = request.LastName;
             user.Address = request.Address;
             user.Description = request.Description;
+            user.UpdateDate = DateTime.Now;
             this._userDomainRepository.Update(user);
 
             infoResponse.FirstName = request.FirstName;
             infoResponse.LastName = request.LastName;
-            infoResponse.Address = request.Address; 
+            infoResponse.Address = request.Address;
             infoResponse.Description = request.Description;
-            
+
 
             return infoResponse;
         }
@@ -98,6 +100,20 @@ namespace API
             response.Role = response.Role;
 
             return response;
+        }
+        public bool ValidateUser(c request){
+            
+            bool isValidUser = false;
+            var user = this._userDomainRepository.GetUserByEmail(request.Email);
+            if (user == null)
+            {
+                isValidUser = false;
+                return isValidUser;
+            }
+            if (user.Password == request.Password) { 
+                isValidUser = true;
+            }
+            return isValidUser;
         }
     }
 }

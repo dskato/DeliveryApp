@@ -1,11 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Data.Configs
 {
@@ -15,10 +10,21 @@ namespace Infrastructure.Data.Configs
         {
             builder.ToTable("orders");
             builder.HasKey(x => x.Id);
-            builder.HasOne(x => x.Product).WithMany().HasForeignKey(x => x.ProductId).OnDelete(DeleteBehavior.NoAction).IsRequired(false);
-            builder.HasOne(x => x.RequestingUser).WithMany().HasForeignKey(x => x.RequestingUserId).OnDelete(DeleteBehavior.NoAction).IsRequired(false);
-            builder.HasOne(x => x.CourierUser).WithMany().HasForeignKey(x => x.CourierUserId).OnDelete(DeleteBehavior.NoAction).IsRequired(false);
 
+            builder.HasOne(o => o.Product)
+            .WithMany(p => p.Orders)
+            .HasForeignKey(o => o.ProductId);
+
+            builder.HasOne(o => o.RequestingUser)
+            .WithMany(u => u.Orders)
+            .HasForeignKey(o => o.RequestingUserId)
+            .OnDelete(DeleteBehavior.NoAction);
+
+            builder.HasOne(o => o.CourierUser)
+            .WithMany()
+            .HasForeignKey(o => o.CourierUserId)
+            .OnDelete(DeleteBehavior.NoAction);
+          
         }
     }
 }

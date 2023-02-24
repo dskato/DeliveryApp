@@ -59,6 +59,21 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("get-validateuser")]
+        public IActionResult ValidateUser([FromForm] ValidateUserRequest request)
+        {
+            try
+            {
+                var response = this._applicationService.ValidateUser(request);
+                return Success(response);
+            }
+            catch (Exception exc)
+            {
+                return this.BadRequest(exc.Message);
+            }
+        }
+
         [HttpDelete]
         [Route("delete-userbyid")]
         public IActionResult DeleteUserById(int id)
