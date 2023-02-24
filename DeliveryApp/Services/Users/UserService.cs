@@ -101,7 +101,7 @@ namespace API
 
             return response;
         }
-        public bool ValidateUser(c request){
+        public bool ValidateUser(ValidateUserRequest request){
             
             bool isValidUser = false;
             var user = this._userDomainRepository.GetUserByEmail(request.Email);
