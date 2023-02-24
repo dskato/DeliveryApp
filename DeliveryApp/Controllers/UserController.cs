@@ -59,8 +59,8 @@ namespace API.Controllers
             }
         }
 
-        [HttpGet]
-        [Route("get-validateuser")]
+        [HttpPost]
+        [Route("post-validateuser")]
         public IActionResult ValidateUser([FromForm] ValidateUserRequest request)
         {
             try
