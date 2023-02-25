@@ -9,7 +9,7 @@ namespace API
         GetUserResponse GetUserByEmail(string email);
         GetUserResponse GetUserById(int userId);
         EditUserInfoResponse EditUserInfo(EditUserInfoRequest request);
-        bool ValidateUser(ValidateUserRequest request);
+        GetUserResponse ValidateUser(ValidateUserRequest request);
 
     }
 }

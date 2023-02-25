@@ -101,19 +101,26 @@ namespace API
 
             return response;
         }
-        public bool ValidateUser(ValidateUserRequest request){
+        public GetUserResponse ValidateUser(ValidateUserRequest request){
             
-            bool isValidUser = false;
+            GetUserResponse response = new GetUserResponse();
             var user = this._userDomainRepository.GetUserByEmail(request.Email);
             if (user == null)
             {
-                isValidUser = false;
-                return isValidUser;
+                throw new Exception("User not found!");
             }
-            if (user.Password == request.Password) { 
-                isValidUser = true;
+            if (request.Password != user.Password) {
+                throw new Exception("Incorrect email or password!");
             }
-            return isValidUser;
+            response.Id = user.Id;
+            response.Email = user.Email;
+            response.FirstName= user.FirstName;
+            response.LastName= user.LastName;
+            response.Description = user.Description;
+            response.Address= user.Address;
+            response.Role= user.Role;
+
+            return response;
         }
     }
 }

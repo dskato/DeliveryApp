@@ -67,6 +67,7 @@ namespace API.Controllers
             {
                 var response = this._applicationService.ValidateUser(request);
                 return Success(response);
+
             }
             catch (Exception exc)
             {
