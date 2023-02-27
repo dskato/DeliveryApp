@@ -16,6 +16,7 @@ namespace API
             entity.Description = request.Description;
             entity.Weight = request.Weight;
             entity.UserId = request.UserId;
+            entity.CreateDate = DateTime.Now;
 
             this._productDomainRepository.CreateProduct(entity);
 
@@ -72,6 +73,7 @@ namespace API
             product.Name = request.Name;
             product.Weight = request.Weight;
             product.Description = request.Description;
+            product.UpdateDate = DateTime.Now;
             this._productDomainRepository.Update(product);
 
             response.Id = product.Id;
@@ -83,5 +85,23 @@ namespace API
             return response;
         }
 
+        public List<GetProductResponse> GetProductListByUserId(int userId)
+        {
+
+            List<GetProductResponse> response = new List<GetProductResponse>();
+
+            var entityList = this._productDomainRepository.GetAllProductsByUserId(userId);
+            foreach (var entity in entityList)
+            {
+                GetProductResponse dto = new GetProductResponse();
+                dto.Id = entity.Id;
+                dto.Name = entity.Name;
+                dto.Weight = entity.Weight;
+                dto.Description = entity.Description;
+                dto.UserId = entity.UserId;
+                response.Add(dto);
+            }
+            return response;
+        }
     }
 }

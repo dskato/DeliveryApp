@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  api:
+    image: ${DOCKER_REGISTRY-}api
+    build:
+      context: .
+      dockerfile: DeliveryApp/Dockerfile
+    ports:
+      - "80:80"
+    environment:
+      - ConnectionStrings__DeliveryAppConnection=server=DESKTOP-2N5KJE0;database=DeliveryAppDb;Trusted_Connection=True

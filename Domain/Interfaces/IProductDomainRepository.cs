@@ -13,5 +13,6 @@ namespace Domain.Interfaces
         int CreateProduct(ProductEntity entity);
         ProductEntity GetProductById(int id);
         void DeleteProductById(int id);
+        List<ProductEntity> GetAllProductsByUserId(int userId);
     }
 }

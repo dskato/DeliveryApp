@@ -43,6 +43,21 @@ namespace API.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("get-productbyuserid")]
+        public IActionResult GetProductByUserId(int userId)
+        {
+            try
+            {
+                var response = this._applicationService.GetProductListByUserId(userId);
+                return Success(response);
+            }
+            catch (Exception exc)
+            {
+                return this.BadRequest(exc.Message);
+            }
+        }
+
         [HttpDelete]
         [Route("delete-productbyid")]
         public IActionResult DeleteProductById(int id)
@@ -60,7 +75,7 @@ namespace API.Controllers
 
         [HttpPut]
         [Route("edit-product")]
-        public IActionResult EditProduct(EditProductRequest request)
+        public IActionResult EditProduct( EditProductRequest request)
         {
             try
             {

@@ -20,8 +20,7 @@ builder.Services.AddCors(o => o.AddPolicy("CorsPolicy", builder =>
 {
     builder
     .AllowAnyMethod()
-    .AllowAnyHeader()
-    .WithOrigins("http://localhost:4200");
+    .AllowAnyHeader();
 }));
 var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 

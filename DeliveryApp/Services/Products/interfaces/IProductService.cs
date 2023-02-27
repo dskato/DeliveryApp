@@ -8,5 +8,6 @@ namespace API
         bool DeleteProductById(int productId);
         GetProductResponse GetProductById(int productId);
         GetProductResponse EditProductInfo(EditProductRequest request);
+        List<GetProductResponse> GetProductListByUserId(int userId);
     }
 }

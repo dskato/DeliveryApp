@@ -35,6 +35,13 @@ namespace Infrastructure.Data.Repositories
             return entity;
         }
 
-        
+        public List<ProductEntity> GetAllProductsByUserId(int userId) { 
+
+            var productList = this.Context.ProductEntity.Where(x => x.UserId == userId).ToList();
+            return productList;
+
+        }
+
+
     }
 }
